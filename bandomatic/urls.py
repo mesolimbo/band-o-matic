@@ -17,6 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+import greet.views
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', greet.views.index, name="index"),
+    # Uncomment this and the entry in `INSTALLED_APPS` if you wish to use the Django admin feature:
+    # https://docs.djangoproject.com/en/5.0/ref/contrib/admin/
+    # path("admin/", admin.site.urls),
 ]
