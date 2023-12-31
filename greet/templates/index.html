@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Your Site Title</title>{% load static %}
-    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
-    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
-</head>
-<body>
-    <h1>Welcome</h1>
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+    <h1>Coming to a stage near you ... {{ band_name }}</h1>
+    <p><a href="{% url 'privacy' %}">Privacy Policy</a></p>
+{% endblock %}

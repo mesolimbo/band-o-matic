@@ -1,0 +1,21 @@
+<!DOCTYPE html>{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }} - Bands.Twerk.Click</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    <style>
+        pre {
+            width: 600px;           /* Sets the width of the element */
+            white-space: pre-wrap;  /* Allows text to wrap within the container */
+            word-wrap: break-word;  /* Breaks the words at the end of the line */
+            overflow-wrap: break-word; /* Ensures long words do not overflow */
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+{% block content %}{% endblock %}
+</body>
+</html>
