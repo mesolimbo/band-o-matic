@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from randomizer.random import generate_band_name
+from randomizer.picker import generate_band_name
 
 
 def index(request):

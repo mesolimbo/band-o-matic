@@ -24,7 +24,7 @@ class Word(models.Model):
     categories = models.ManyToManyField(Category, through='WordCategory')
 
     def __str__(self):
-        return f'{self.name} ({self.category})'
+        return self.name
 
 
 class WordCategory(models.Model):
