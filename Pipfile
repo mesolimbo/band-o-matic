@@ -10,6 +10,7 @@ sqlparse = "==0.4.4"
 gunicorn = "<22.0,>=21.2"
 dj-database-url = "<3.0,>=2.0"
 whitenoise = {extras = ["brotli"], version = "<7.0,>=6.0"}
+psycopg = {extras = ["binary"], version = "*"}
 
 [dev-packages]
 
