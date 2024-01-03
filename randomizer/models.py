@@ -7,10 +7,13 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural = "categories"
+
 
 class Word(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    categories =models.ManyToManyField(Category, through='WordCategory')
+    categories = models.ManyToManyField(Category, through='WordCategory')
 
     def __str__(self):
         return self.name
@@ -21,8 +24,9 @@ class WordCategory(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.word} {self.category}'
+        return f'{self.word} ({self.category})'
         # return f'{str(self.word)} {str(self.category)}'
 
     class Meta:
         unique_together = ('word', 'category')
+        verbose_name_plural = "word categories"

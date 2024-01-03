@@ -65,14 +65,16 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     # Uncomment this and the entry in `urls.py` if you wish to use the Django admin feature:
     # https://docs.djangoproject.com/en/5.0/ref/contrib/admin/
-    # "django.contrib.admin",
+    "django.contrib.admin",
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'greet',
-    'randomizer'
+    'randomizer',
+    'rest_framework',
+    'coreapi',
 ]
 
 MIDDLEWARE = [
@@ -191,3 +193,10 @@ WHITENOISE_KEEP_ONLY_HASHED_FILES = True
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}

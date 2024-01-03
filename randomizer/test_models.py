@@ -30,6 +30,6 @@ class TestWordCategoryModel(TestCase):
     def test_word_category_creation(self):
         self.assertTrue(isinstance(self.wordCat1, WordCategory))
         self.assertEqual(
-            self.word1.name + " " + self.cat1.name,
-            self.wordCat1.__str__()
+            f'{self.word1.name} ({self.cat1.name})',
+            str(self.wordCat1)
         )
