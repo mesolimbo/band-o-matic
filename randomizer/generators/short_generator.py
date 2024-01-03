@@ -1,4 +1,3 @@
-
 import random
 
 from randomizer.generators.abstract_generator import AbstractGenerator

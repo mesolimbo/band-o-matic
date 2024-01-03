@@ -1,4 +1,5 @@
 import random
+import re
 
 import inflect
 
@@ -20,4 +21,6 @@ def pluralize(word):
     p = inflect.engine()
     plural = p.plural_noun(str(word))
     # Fix buggy y plurals
-    return plural.replace('ys', 'ies')
+    clean_plural = re.sub('(?<![aeiou])ys$', 'ies', plural)
+
+    return clean_plural

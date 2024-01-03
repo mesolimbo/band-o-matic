@@ -1,10 +1,11 @@
-from randomizer import util
-
 from abc import ABC, abstractmethod
 
+from randomizer import util
 
-class AbstractGenerator:
+
+class AbstractGenerator(ABC):
     util = util
+
     @abstractmethod
     def generate_name(self):
         pass

@@ -7,4 +7,4 @@ class WordyGenerator(AbstractGenerator):
         adjective = self.util.random_word('Adjective')
         noun = self.util.pluralize(self.util.random_word('Noun'))
 
-        return f'The {adverb} {adjective} {noun}!'
+        return f'The {adverb} {adjective} {noun}'

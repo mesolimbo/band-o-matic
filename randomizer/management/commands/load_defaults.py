@@ -1,5 +1,4 @@
 from csv import DictReader
-
 from django.core.management import BaseCommand
 
 from randomizer.models import Word, Category, WordCategory
