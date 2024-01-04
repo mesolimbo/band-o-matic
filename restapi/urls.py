@@ -14,5 +14,5 @@ urlpatterns = [
     path('word/<int:pk>/', views.WordUpdateDeleteAPIView.as_view()),
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('', include_docs_urls(title="Bands.Twerk.Click REST API")),
+    path('', include_docs_urls(title="Bands.Twerk.Click REST API"), name='docs-index'),
 ]

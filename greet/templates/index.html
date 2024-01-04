@@ -1,25 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
 <pre>
-<h1 style="text-align: center">Welcome to home of the<br />Band Name Generator API!</h1>
-During the winter break of 2023-2024, I developed this Django site. It's a blend of interview preparation and playful interaction with ChatGPT.
+<h1 style="text-align: center">Welcome to the home of the<br />Band Name Generator API</h1>
+Developed during the winter break of 2023-2024, this Django site showcases my transition back into engineering from Management. It was not only a learning journey but also a fun experience to reconnect with ChatGPT. My goal was to create a pipeline and CMS from scratch using a modern framework, and to deliver an MVP proof-of-concept service powered by the cognitive engines of tomorrow, all in the space of a 2-week sprint.
 
-It might seem nerdy to some, but let's explore what I've built:
+Let me give you a tour of what I built and learned. First, behold the automated Random Band Name Generator (clicking on the name generates a new one):
 
-<div class="styled-div">Coming to an arena near you... <strong><a style="color: black; text-decoration: none" href="https://bands.twerk.click/">{{ band_name }}</a></strong>!</div>
+<div class="styled-div">In concert, live for one night only ...<br/><strong><a class="thick-link" href="{% url 'index' %}">{{ band_name }}</a></strong>!</div>
 
-At first glance, it appears basic, some JavaScript could achieve the same. However, the dynamism you see is Python-rendered server-side text.
+At first glance, it appears simplistic. Some JavaScript could effortlessly achieve the same effect. However, the dynamic text you see rendered by Python on the server-side is the tip of the iceberg.
 
-Behind the scenes, I've deployed on Heroku, connected a Postgres DB with my app, constructed a <a class="thick-link" href="https://bands.twerk.click/api/v1/">secure REST API</a> to interact programmatically with my DB, and set up Django's <a class="thick-link" href="https://bands.twerk.click/admin">admin UI</a> for full manual control. All in a few days' work!
+Behind the scenes, I've deployed Django on Heroku with CICD, installed a PostgreSQL DB behind my app, created a <a class="thick-link" href="{% url 'api-docs:docs-index' %}">secure REST API</a> to programmatically manipulate my data, and configured Django's <a class="thick-link" href="{% url 'admin:login' %}">admin UI</a> for hassle-free maintenance. I did all this in just a few days' time, thanks to ChatGPT!
 
-But, the journey didn't end there:
+But, the fun didn't end there ...
 
-I developed <a class="thick-link" href="https://bands.twerk.click/api/v1/random/">a special JSON GET endpoint</a> that dispenses random band names, supplemented it with <a class="thick-link" href="https://bands.twerk.click/api/v1/openapi.html">an OpenAPI spec</a>, and topped it off with a <a class="thick-link" href="{% url 'privacy' %}">Privacy Policy</a>. Why, you ask?
+I developed <a class="thick-link" href="{% url 'random_band_endpoint' %}">a modest JSON GET endpoint</a> that dispenses random band names 24/7, supplemented by <a class="thick-link" href="{%  url 'openapi' %}">an OpenAPI spec</a>, and I even penned a <a class="thick-link" href="{% url 'privacy' %}">Privacy Policy</a> in legalese. Lots of busy work to be sure, but I had an ulterior motive.
 
-It's for a simple reason: to connect the JSON endpoint, the spec, and the policy, to an OpenAI GPT. An autonomous agent was born from this collaboration, serving you unique band names and matching art according to given inputs. Give it whirl <a class="thick-link" href="https://chat.openai.com/g/g-cySOJm4lG-awesome-band-factory">here</a>!
+My real aim was to connect the JSON endpoint, the spec, and the policy to an OpenAI GPT. I unleashed an autonomous agent that chooses a unique name for your band, designs matching constumes to fit your style, and drafts press releases about your next album before you can set foot in the studio.
+    
+Give it a whirl <a class="thick-link" href="https://chat.openai.com/g/g-cySOJm4lG-awesome-band-factory">here</a>, it's guaranteed fun!
 
-Silly it may seem, but the goal was to establish a pipeline with an AI, meticulously integrating it into a system I built from scratch. The idea? Connect our data with the cognitive engines of tomorrow.
-
-Currious about the project's internals? Feel free to <a class="thick-link" href="https://github.com/mesolimbo/band-o-matic/">explore the GitHub repo</a>. Thank you for stopping by!
+If you're interested in the architecture for this project, you can <a class="thick-link" href="https://github.com/mesolimbo/band-o-matic/">clone the band-o-matic repo on GitHub</a>. I'd love to hear your thoughts!
+    
+Thank you for you time and Happy New Year!
 </pre>
 {% endblock %}

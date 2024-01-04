@@ -11,26 +11,29 @@
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
     <style>
         body {
+            align-items: center;
+            background: white;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
             margin: 0;
+            min-height: 100vh;
         }
         pre {
-            width: 600px;           /* Sets the width of the element */
-            white-space: pre-wrap;  /* Allows text to wrap within the container */
-            word-wrap: break-word;  /* Breaks the words at the end of the line */
-            overflow-wrap: break-word; /* Ensures long words do not overflow */
+            border: none;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            margin: 0;
+            overflow-wrap: break-word; 
             padding: 1rem;
             text-align: justify;
-            border: none;
-            margin: 0;
+            white-space: pre-wrap;
+            width: 600px;         
+            word-wrap: break-word;
         }
         a.thick-link {
-            font-weight: bolder;
-            font-size: 110%;
             color: black;
+            font-size: 105%;
+            font-weight: bolder;
+            text-decoration: none
         }
         div.styled-div {
             border: 1px solid rgba(0,0,0,0.1); /* faint border */

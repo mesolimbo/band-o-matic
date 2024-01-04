@@ -201,3 +201,6 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
+
+API_HOSTNAME = 'bands.twerk.click'
+SITE_ID = 1

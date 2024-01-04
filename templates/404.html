@@ -3,8 +3,8 @@
     <pre>
         <h1>Resource not found ...</h1>
         <p>You're looking for something that isn't here, sorry!</p>
-        <p>You can <a class="thick-link" href="https://bands.twerk.click/">click here</a> to get back to the home page.</p>
-        <p><a class="thick-link" href="https://bands.twerk.click/api/v1/">Click here</a> for the API that powers the Band Name Generator.</p>
+        <p>You can <a class="thick-link" href="{% url 'index' %}">click here</a> to get back to the home page.</p>
+        <p><a class="thick-link" href="{% url 'api-docs:docs-index' %}">Click here</a> for the API that powers the Band Name Generator.</p>
         <p>You can also <a class="thick-link" href="https://github.com/mesolimbo/band-o-matic">check out the band-o-matic project</a> on GitHub.</p>
         <p>Best of luck finding your next click!</p>
     </pre>
