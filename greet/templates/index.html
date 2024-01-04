@@ -1,5 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Coming to a stage near you ... {{ band_name }}!</h1>
-    <p><a class="thick-link" href="{% url 'privacy' %}">Privacy Policy</a></p>
+<pre>
+<h1 style="text-align: center">Welcome to home of the<br />Band Name Generator API!</h1>
+During the winter break of 2023-2024, I developed this Django site. It's a blend of interview preparation and playful interaction with ChatGPT.
+
+It might seem nerdy to some, but let's explore what I've built:
+
+<div class="styled-div">Coming to an arena near you... <strong><a style="color: black; text-decoration: none" href="https://bands.twerk.click/">{{ band_name }}</a></strong>!</div>
+
+At first glance, it appears basic, some JavaScript could achieve the same. However, the dynamism you see is Python-rendered server-side text.
+
+Behind the scenes, I've deployed on Heroku, connected a Postgres DB with my app, constructed a <a class="thick-link" href="https://bands.twerk.click/api/v1/">secure REST API</a> to interact programmatically with my DB, and set up Django's <a class="thick-link" href="https://bands.twerk.click/admin">admin UI</a> for full manual control. All in a few days' work!
+
+But, the journey didn't end there:
+
+I developed <a class="thick-link" href="https://bands.twerk.click/api/v1/random/">a special JSON GET endpoint</a> that dispenses random band names, supplemented it with <a class="thick-link" href="https://bands.twerk.click/api/v1/openapi.html">an OpenAPI spec</a>, and topped it off with a <a class="thick-link" href="{% url 'privacy' %}">Privacy Policy</a>. Why, you ask?
+
+It's for a simple reason: to connect the JSON endpoint, the spec, and the policy, to an OpenAI GPT. An autonomous agent was born from this collaboration, serving you unique band names and matching art according to given inputs. Give it whirl <a class="thick-link" href="https://chat.openai.com/g/g-cySOJm4lG-awesome-band-factory">here</a>!
+
+Silly it may seem, but the goal was to establish a pipeline with an AI, meticulously integrating it into a system I built from scratch. The idea? Connect our data with the cognitive engines of tomorrow.
+
+Currious about the project's internals? Feel free to <a class="thick-link" href="https://github.com/mesolimbo/band-o-matic/">explore the GitHub repo</a>. Thank you for stopping by!
+</pre>
 {% endblock %}
