@@ -15,11 +15,17 @@ class TestShortGenerator(unittest.TestCase):
         self.obj.util.random_word.return_value = "Test"
         self.assertEqual(self.obj.generate_name(), "Tests")
 
-    @patch("random.randint", return_value=89)
-    def test_generate_name_less_than_90(self, _):
+    @patch("random.randint", return_value=79)
+    def test_generate_name_less_than_80(self, _):
         self.obj.util.pluralize.return_value = "Tests"
         self.obj.util.random_word.return_value = "Test"
         self.assertEqual(self.obj.generate_name(), "The Tests")
+
+    @patch("random.randint", return_value=29)
+    def test_generate_name_less_than_30(self, _):
+        self.obj.util.pluralize.return_value = "Tests"
+        self.obj.util.random_word.return_value = "Test"
+        self.assertEqual(self.obj.generate_name(), "The Test")
 
 
 if __name__ == "__main__":

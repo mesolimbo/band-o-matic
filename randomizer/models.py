@@ -9,6 +9,7 @@ class Category(models.Model):
 
     class Meta:
         verbose_name_plural = "categories"
+        ordering = ['name']
 
 
 class Word(models.Model):
@@ -17,6 +18,9 @@ class Word(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        ordering = ['name']
 
 
 class WordCategory(models.Model):
