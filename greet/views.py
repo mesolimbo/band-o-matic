@@ -3,14 +3,18 @@ from django.shortcuts import render
 from randomizer.picker import generate_band_name
 
 
-def index(request):
+def generate_band_data():
     band_name = generate_band_name()
-
-    # Use band_name in your context
-    return render(request, 'index.html', {
+    return {
         'band_name': band_name,
         'title': 'Welcome!'
-    })
+    }
+
+
+def index(request):
+    data = generate_band_data()
+    # Use band_name in your context
+    return render(request, 'index.html', data)
 
 
 def privacy(request):

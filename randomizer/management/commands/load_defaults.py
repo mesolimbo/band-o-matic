@@ -23,23 +23,23 @@ class Command(BaseCommand):
     # Show this when the user types help
     help = "Loads default words from defaut_words.csv into our Word model"
 
+    def add_arguments(self, parser):
+        parser.add_argument('csv_path', nargs='?', default='./defaut_words.csv')
+
     def handle(self, *args, **options):
+        csv_path = options['csv_path']
+
         if Category.objects.exists() or Word.objects.exists():
             print('Default data already loaded...exiting.')
             print(ALREDY_LOADED_ERROR_MESSAGE)
             return
-        # print("Creating Category data")
-        # for category_name in CATEGORIES:
-        #     cat = Category(name=category_name)
-        #     cat.save()
+
         print("Loading default Word and Category defaults")
-        for row in DictReader(open('./defaut_words.csv')):
+        for row in DictReader(open(csv_path)):
             # First, create or retrieve a category
             category, _ = Category.objects.get_or_create(name=row['category'])
-
             # Next, create or retrieve a word
             word, _ = Word.objects.get_or_create(name=row['name'])
-
             # Finally, create or retrieve a new WordCategory instance to link the word and category
             word_category, _ = WordCategory.objects.get_or_create(
                 word=word, category=category

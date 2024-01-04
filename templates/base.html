@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    {% if title %}
     <title>{{ title }} - Bands.Twerk.Click</title>
+    {% else %}
+    <title>Bands.Twerk.Click</title>
+    {% endif %}
     <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
     <style>
@@ -11,7 +15,13 @@
             white-space: pre-wrap;  /* Allows text to wrap within the container */
             word-wrap: break-word;  /* Breaks the words at the end of the line */
             overflow-wrap: break-word; /* Ensures long words do not overflow */
-            text-align: justify;
+            padding: 2rem;
+            text-align: justify-all;
+        }
+        a.thick-link {
+            font-weight: bolder;
+            font-size: 110%;
+            color: black;
         }
     </style>
 </head>

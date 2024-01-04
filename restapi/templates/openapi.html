@@ -1,0 +1,31 @@
+{% extends 'prism_base.html' %}
+{% block content %}
+<pre class="openapi"><code class="language-yaml">
+openapi: 3.0.0
+info:
+  title: Random Band Name API
+  version: 1.0.0
+  description: This API provides a random band name with each request.
+servers:
+  - url: https://bands.twerk.click/api/v1
+paths:
+  /random/:
+    get:
+      summary: Get a Random Band Name
+      description: Returns a random band name in a simple JSON format.
+      operationId: getRandomBandName
+      responses:
+        '200':
+          description: A random band name
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  band_name:
+                    type: string
+                    example: "The Ghostly White Numbers"
+        '500':
+          description: Internal Server Error
+</code></pre>
+{% endblock %}

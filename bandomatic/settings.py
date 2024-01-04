@@ -74,6 +74,7 @@ INSTALLED_APPS = [
     'greet',
     'randomizer',
     'rest_framework',
+    'restapi',
     'coreapi',
 ]
 
@@ -97,7 +98,7 @@ ROOT_URLCONF = 'bandomatic.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

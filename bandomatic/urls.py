@@ -21,10 +21,10 @@ from django.urls import path
 import greet.views
 
 urlpatterns = [
-    path('', greet.views.index, name="index"),
     path('privacy.html', greet.views.privacy, name="privacy"),
     path('api/v1/', include("restapi.urls")),
     # Uncomment this and the entry in `INSTALLED_APPS` if you wish to use the Django admin feature:
     # https://docs.djangoproject.com/en/5.0/ref/contrib/admin/
     path('admin/', admin.site.urls),
+    path('', greet.views.index, name="index"),
 ]
