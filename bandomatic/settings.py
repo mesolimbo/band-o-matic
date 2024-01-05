@@ -45,15 +45,17 @@ SECRET_KEY = os.environ.get(
 IS_HEROKU_APP = "DYNO" in os.environ and "CI" not in os.environ
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if not IS_HEROKU_APP:
-    DEBUG = True
+# if not IS_HEROKU_APP:
+#     DEBUG = True
+
+DEBUG = bool(os.environ.get("DJANGO_DEBUG", False)) or not IS_HEROKU_APP
 
 # On Heroku, it's safe to use a wildcard for `ALLOWED_HOSTS``, since the Heroku router performs
 # validation of the Host header in the incoming HTTP request. On other platforms you may need
 # to list the expected hostnames explicitly to prevent HTTP Host header attacks. See:
 # https://docs.djangoproject.com/en/5.0/ref/settings/#std-setting-ALLOWED_HOSTS
 if IS_HEROKU_APP:
-    ALLOWED_HOSTS = ["*"]
+    ALLOWED_HOSTS = ["bands.twerk.click"]
 else:
     ALLOWED_HOSTS = []
 
@@ -175,8 +177,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
 
 STORAGES = {
     # Enable WhiteNoise's GZip and Brotli compression of static assets:

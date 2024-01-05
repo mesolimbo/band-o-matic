@@ -1,11 +1,15 @@
 import random
+import time
 
 from randomizer.generators.abstract_generator import AbstractGenerator
 
 
 class ComboGenerator(AbstractGenerator):
     def __init__(self):
+        super().__init__()
         self.prefixes = ["The", "My", "This", "His", "Her", "Their", "Our"]
+        # Setting the seed with the epoch time ensures a new seed with each instantiation
+        random.seed(time.time())
 
     def generate_name(self):
         prefix1 = random.choice(self.prefixes)

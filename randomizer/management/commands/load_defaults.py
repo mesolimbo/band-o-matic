@@ -3,13 +3,7 @@ from django.core.management import BaseCommand
 
 from randomizer.models import Word, Category, WordCategory
 
-CATEGORIES = [
-    'Adjective',
-    'Adverb',
-    'Noun',
-    'Famous',
-    'Verb',
-]
+CATEGORIES = ['Adjective', 'Adverb', 'Noun', 'Famous', 'Verb']
 
 ALREDY_LOADED_ERROR_MESSAGE = """
 If you need to reload the Word defaults from the CSV file,
@@ -20,7 +14,6 @@ database with tables"""
 
 class Command(BaseCommand):
     """To load default words, run command from the project root: `./manage.py load_defaults`"""
-    # Show this when the user types help
     help = "Loads default words from defaut_words.csv into our Word model"
 
     def add_arguments(self, parser):
@@ -28,19 +21,13 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         csv_path = options['csv_path']
-
         if Category.objects.exists() or Word.objects.exists():
             print('Default data already loaded...exiting.')
             print(ALREDY_LOADED_ERROR_MESSAGE)
             return
-
         print("Loading default Word and Category defaults")
-        for row in DictReader(open(csv_path)):
-            # First, create or retrieve a category
-            category, _ = Category.objects.get_or_create(name=row['category'])
-            # Next, create or retrieve a word
-            word, _ = Word.objects.get_or_create(name=row['name'])
-            # Finally, create or retrieve a new WordCategory instance to link the word and category
-            word_category, _ = WordCategory.objects.get_or_create(
-                word=word, category=category
-            )
+        with open(csv_path) as file:  # using a context manager for file handling
+            for row in DictReader(file):
+                category, _ = Category.objects.get_or_create(name=row['category'])
+                word, _ = Word.objects.get_or_create(name=row['name'])
+                word_category, _ = WordCategory.objects.get_or_create(word=word, category=category)
