@@ -18,7 +18,7 @@ inflect==7.0.0
 itypes==1.2.0
 packaging==23.2
 psycopg-binary==3.1.16
-psycopg==3.1.16
+psycopg==3.1.17
 pydantic==2.5.3
 pydantic_core==2.14.6
 pytz==2023.3.post1
