@@ -19,7 +19,7 @@ itypes==1.2.0
 packaging==23.2
 psycopg-binary==3.1.17
 psycopg==3.1.17
-pydantic==2.5.3
+pydantic==2.6.0
 pydantic_core==2.14.6
 pytz==2023.4
 requests==2.31.0
