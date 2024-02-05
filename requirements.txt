@@ -5,7 +5,7 @@ MarkupSafe==2.1.5
 PyJWT==2.8.0
 annotated-types==0.6.0
 asgiref==3.7.2
-certifi==2023.11.17
+certifi==2024.2.2
 charset-normalizer==3.3.2
 coreapi==2.3.3
 coreschema==0.0.4
@@ -18,10 +18,10 @@ inflect==7.0.0
 itypes==1.2.0
 packaging==23.2
 psycopg-binary==3.1.18
-psycopg==3.1.17
-pydantic==2.5.3
-pydantic_core==2.14.6
-pytz==2023.4
+psycopg==3.1.18
+pydantic==2.6.1
+pydantic_core==2.16.2
+pytz==2024.1
 requests==2.31.0
 setuptools==69.0.3
 sqlparse==0.4.4
