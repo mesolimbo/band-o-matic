@@ -1,5 +1,7 @@
 # 🎵 Band Name Generator API
 
+[![Django CI Check](https://github.com/mesolimbo/band-o-matic/actions/workflows/django.yml/badge.svg)](https://github.com/mesolimbo/band-o-matic/actions/workflows/django.yml)
+
 Welcome to the home of the Band Name Generator API! Conceived and developed during the winter break of 2023-2024, this **Django-based application** captures one man's reengagement with engineering from management. This project serves as a testament to not only a rejuvenating learning process but also an enjoyable stint of growing my work proficiency with **ChatGPT**.
 
 ## 🎯 Project Vision
