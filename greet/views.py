@@ -33,8 +33,11 @@ def export_words(request):
     writer = csv.writer(response)
     writer.writerow(['category', 'name'])
 
-    # Fetch all WordCategory objects and sort them by category name and word name
-    word_categories = WordCategory.objects.all().order_by('category__name', 'word__name')
+    # Fetch all WordCategory objects
+    word_categories = WordCategory.objects.all()
+
+    # Sort them by category name and word name, considering lowercase before uppercase
+    word_categories = sorted(word_categories, key=lambda w: (w.category.name.lower(), w.word.name.lower()))
 
     for wc in word_categories:
         writer.writerow([wc.category.name, wc.word.name])

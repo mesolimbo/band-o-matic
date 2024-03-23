@@ -13,7 +13,7 @@ database with tables"""
 
 
 class Command(BaseCommand):
-    """To load default words, run command from the project root: `./manage.py load_defaults`"""
+    """To load default words, run command from the project root: `./manage.py migrate && ./manage.py load_defaults`"""
     help = "Loads default words from defaut_words.csv into our Word model"
 
     def add_arguments(self, parser):
