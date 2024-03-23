@@ -28,7 +28,7 @@ def privacy(request):
 
 def export_words(request):
     response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="words.csv"'
+    response['Content-Disposition'] = 'attachment; filename="export_words.csv"'
 
     writer = csv.writer(response)
     writer.writerow(['category', 'name'])

@@ -5,6 +5,7 @@ Adjective,Animistic
 Adjective,Baleful
 Adjective,Bellicose
 Adjective,Bilious
+Adjective,Black
 Adjective,Boorish
 Adjective,Broken
 Adjective,Calamitous
@@ -23,8 +24,8 @@ Adjective,Effulgent
 Adjective,Egregious
 Adjective,Endemic
 Adjective,Entry Level
-Adjective,Equanimous
 Adjective,Execrable
+Adjective,Fabulous
 Adjective,Fastidious
 Adjective,Feckless
 Adjective,Fecund
@@ -59,11 +60,12 @@ Adjective,Minatory
 Adjective,Mini
 Adjective,Mordant
 Adjective,Munificent
-Adjective,NSFW
 Adjective,Nefarious
+Adjective,Neon
 Adjective,Nerdy
 Adjective,New
 Adjective,Noxious
+Adjective,NSFW
 Adjective,Obscene
 Adjective,Obtuse
 Adjective,Off-Color
@@ -78,7 +80,6 @@ Adjective,Phenemonal
 Adjective,Piss Poor
 Adjective,Platitudinous
 Adjective,Propitious
-Adjective,Puckish
 Adjective,Querulous
 Adjective,Quiescent
 Adjective,Redolent
@@ -98,6 +99,7 @@ Adjective,Talking
 Adjective,Tenacious
 Adjective,Tremulous
 Adjective,Trenchant
+Adjective,Turbo
 Adjective,Turbulent
 Adjective,Turgid
 Adjective,Ubiquitous
@@ -253,6 +255,7 @@ Famous,Maya Angelou
 Famous,Miss Cleo
 Famous,Muhammad Ali
 Famous,Neil Armstrong
+Famous,Obama
 Famous,Pope Francis
 Famous,Queen Mum
 Famous,Sigmund Freud
@@ -277,16 +280,18 @@ Noun,Car
 Noun,Cat
 Noun,Cattle
 Noun,Change
+Noun,Cheek
 Noun,Child
 Noun,City
 Noun,Clowder
+Noun,Cobra
 Noun,Community
 Noun,Company
 Noun,Country
 Noun,Darkness
-Noun,Disco
-Noun,Dispair
+Noun,Despair
 Noun,Door
+Noun,Edge
 Noun,Education
 Noun,Effect
 Noun,Encryption
@@ -297,7 +302,6 @@ Noun,Fact
 Noun,Family
 Noun,Father
 Noun,Fire
-Noun,Force
 Noun,Friend
 Noun,Game
 Noun,Garbage
@@ -308,6 +312,7 @@ Noun,Guy
 Noun,Hand
 Noun,Head
 Noun,History
+Noun,Hobo
 Noun,Home
 Noun,Host
 Noun,Hour
@@ -329,16 +334,16 @@ Noun,Lot
 Noun,Lover
 Noun,Man
 Noun,Meat
+Noun,Medieval
 Noun,Member
 Noun,Minute
+Noun,Mist
 Noun,Money
 Noun,Month
 Noun,Morning
 Noun,Mother
-Noun,Myst
 Noun,Night
 Noun,Number
-Noun,Obama
 Noun,Office
 Noun,Other
 Noun,Parent
@@ -361,7 +366,7 @@ Noun,Racket
 Noun,Rage
 Noun,Reason
 Noun,Refugee
-Noun,Research
+Noun,Researcher
 Noun,Result
 Noun,Right
 Noun,Room
@@ -376,6 +381,7 @@ Noun,Spider
 Noun,State
 Noun,Story
 Noun,Student
+Noun,Swan
 Noun,Swarm
 Noun,System
 Noun,Taxi
@@ -387,6 +393,7 @@ Noun,Terrorist
 Noun,Thing
 Noun,Time
 Noun,Tumor
+Noun,Twinkle
 Noun,Twist
 Noun,Violence
 Noun,Volvo
@@ -394,7 +401,6 @@ Noun,War
 Noun,Water
 Noun,Week
 Noun,Woman
-Noun,Work
 Noun,World
 Noun,Year
 Verb,Add
@@ -439,7 +445,9 @@ Verb,Feel
 Verb,Find
 Verb,Fix
 Verb,Flush
+Verb,Fly
 Verb,Follow
+Verb,Force
 Verb,Forgive
 Verb,Gather
 Verb,Get
