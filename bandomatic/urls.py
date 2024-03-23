@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include
 from django.urls import path
+from django.urls import re_path
 from django.views.generic.base import TemplateView
 
 import greet.views
@@ -29,4 +30,5 @@ urlpatterns = [
     # https://docs.djangoproject.com/en/5.0/ref/contrib/admin/
     path('admin/', admin.site.urls, name='admin'),
     path('', greet.views.index, name='index'),
+    re_path(r'^export_words\.csv$', greet.views.export_words, name='export_words'),
 ]
