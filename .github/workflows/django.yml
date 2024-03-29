@@ -27,5 +27,5 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests with Coverage
       run: |
-        coverage run --omit='*/django/*,*/tests.py,*/test_*.py,manage.py' manage.py test --parallel --shuffle
+        coverage run --omit='*/tests.py,*/test_*.py' manage.py test --parallel --shuffle
         coverage report
