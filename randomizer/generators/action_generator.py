@@ -2,7 +2,7 @@ import random
 import time
 
 from randomizer.generators.abstract_generator import AbstractGenerator
-from randomizer.generators.helpers.action_helper import ActionGeneratorHelper
+from awslambda.helpers.action_helper import ActionGeneratorHelper
 
 
 class ActionGenerator(AbstractGenerator):

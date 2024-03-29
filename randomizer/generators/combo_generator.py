@@ -2,7 +2,7 @@ import random
 import time
 
 from randomizer.generators.abstract_generator import AbstractGenerator
-from randomizer.generators.helpers.combo_helper import ComboGeneratorHelper
+from awslambda.helpers.combo_helper import ComboGeneratorHelper
 
 
 class ComboGenerator(AbstractGenerator):

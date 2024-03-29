@@ -2,7 +2,7 @@ import random
 import time
 
 from randomizer.generators.abstract_generator import AbstractGenerator
-from randomizer.generators.helpers.short_helper import ShortGeneratorHelper
+from awslambda.helpers.short_helper import ShortGeneratorHelper
 
 
 class ShortGenerator(AbstractGenerator):

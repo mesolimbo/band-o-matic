@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-from types import FunctionType
 
 from randomizer import util
 

@@ -1,5 +1,5 @@
 from randomizer.generators.abstract_generator import AbstractGenerator
-from randomizer.generators.helpers.wordy_helper import WordyGeneratorHelper
+from awslambda.helpers.wordy_helper import WordyGeneratorHelper
 
 
 class WordyGenerator(AbstractGenerator):

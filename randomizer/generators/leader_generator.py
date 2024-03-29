@@ -1,5 +1,5 @@
 from randomizer.generators.abstract_generator import AbstractGenerator
-from randomizer.generators.helpers.leader_helper import LeaderGeneratorHelper
+from awslambda.helpers.leader_helper import LeaderGeneratorHelper
 
 
 class LeaderGenerator(AbstractGenerator):

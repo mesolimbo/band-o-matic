@@ -1,6 +1,6 @@
 import random
 
-from randomizer import grammar
+from awslambda.helpers import grammar
 
 
 class ActionGeneratorHelper:

@@ -1,5 +1,6 @@
 import unittest
 from unittest.mock import patch
+
 from randomizer.generators.leader_generator import LeaderGenerator
 
 

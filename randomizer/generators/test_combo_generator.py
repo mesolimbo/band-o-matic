@@ -2,7 +2,7 @@ import unittest
 import unittest.mock as mock
 
 from randomizer.generators.combo_generator import ComboGenerator
-from randomizer.generators.helpers.combo_helper import ComboGeneratorHelper
+from awslambda.helpers.combo_helper import ComboGeneratorHelper
 
 
 class TestComboGenerator(unittest.TestCase):

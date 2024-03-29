@@ -20,6 +20,18 @@ The application boasts a straightforward design – it deals with two primary mo
 
 This project also functions as an **OpenAI GPT action endpoint**, making it a solid starting point if you aim to build your own endpoint or define an **OpenAPI specification**. Given the upcoming opening of the GPT store by OpenAI, the content will be periodically updated to keep pace with ongoing developments. [Click here if you want to try the Random Band Name Generator GPT.](https://chat.openai.com/g/g-cySOJm4lG-awesome-band-factory)
 
+## 🤖 AWS Lambda Integration
+
+The awslambda directory is configured to hold the dependencies and files needed to pick a random band name using DynamoDB and AWS lamdba.
+
+If you need to add new dependencies, you can add them to the requirements.txt in that directory, then run:
+
+```bash
+    pip install -r awsrequirements.txt --platform manylinux2014_x86_64 --target . --only-binary=:all:
+    zip -r ../lambda_package.zip . 
+ ```
+You can upload the lambda_package.zip to AWS Lambda and configure the handler to be `lambda_function.lambda_handler`.
+
 ## 🌱 Future Directions
 
 Although the functional enhancements for this project might be minimal, its design offers a compelling demonstration of a mini CMS. It will undergo further refining, and will likely serve as a springboard for exploring the synergistic use of **React** and **Django** REST APIs. Furthermore, it provides a suitable test-bed to follow disciplined **Python programming practices** within the **DevSecOps** framework, and to learn how to better leverage GitHub's tooling.

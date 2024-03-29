@@ -2,11 +2,11 @@ import random
 import boto3
 from boto3.dynamodb.conditions import Attr
 
-from randomizer.generators.helpers.action_helper import ActionGeneratorHelper
-from randomizer.generators.helpers.combo_helper import ComboGeneratorHelper
-from randomizer.generators.helpers.leader_helper import LeaderGeneratorHelper
-from randomizer.generators.helpers.short_helper import ShortGeneratorHelper
-from randomizer.generators.helpers.wordy_helper import WordyGeneratorHelper
+from helpers.action_helper import ActionGeneratorHelper
+from helpers.combo_helper import ComboGeneratorHelper
+from helpers.leader_helper import LeaderGeneratorHelper
+from helpers.short_helper import ShortGeneratorHelper
+from helpers.wordy_helper import WordyGeneratorHelper
 
 # Set up DynamoDB client
 dynamodb = boto3.resource('dynamodb')
