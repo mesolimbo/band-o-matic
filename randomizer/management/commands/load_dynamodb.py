@@ -20,25 +20,21 @@ class Command(BaseCommand):
         parser.add_argument('csv_path', nargs='?', default='./defaut_words.csv')
 
     def handle(self, *args, **options):
-        csv_path = options['csv_path']
-        dynamodb = boto3.resource('dynamodb')
-
-        logger.info('Initializing tables...')
-        categories_table, words_table = self.init_tables(dynamodb)
-
-        logger.info(f'Loading data from {csv_path} into DynamoDB...')
-        try:
-            rows = self.read_csv_file(csv_path)
-        except FileNotFoundError:
-            logger.info(f'File not found {csv_path}')
-            return
-
+        categories_table, words_table = self.init_db()
+        rows = self.load_csv_data(options)
         categories, word_category_pairs = self.process_rows(rows)
 
+        logger.info('Inserting data into DynamoDB...')
         self.insert_categories(categories_table, categories)
         self.insert_words(words_table, word_category_pairs)
 
-    def init_tables(self, dynamodb):
+    def init_db(self):
+        dynamodb = boto3.resource('dynamodb')
+        logger.info('Initializing tables...')
+        categories_table, words_table = self.reset_tables(dynamodb)
+        return categories_table, words_table
+
+    def reset_tables(self, dynamodb):
         with ThreadPoolExecutor(max_workers=2) as executor:
             futures = [
                 executor.submit(self.clear_and_recreate_table, dynamodb, name)
@@ -100,6 +96,16 @@ class Command(BaseCommand):
             logger.info(f'Processed row ({category_name}, {word_name})')
 
         return categories, word_category_pairs
+
+    def load_csv_data(self, options):
+        csv_path = options['csv_path']
+        logger.info(f'Reading data from {csv_path}...')
+        try:
+            rows = self.read_csv_file(csv_path)
+        except FileNotFoundError:
+            logger.info(f'File not found {csv_path}')
+            raise
+        return rows
 
     @staticmethod
     def insert_categories(categories_table, categories):
