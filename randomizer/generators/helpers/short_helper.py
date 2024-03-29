@@ -1,5 +1,5 @@
 import random
-from grammar import plural
+from randomizer import grammar
 
 
 class ShortGeneratorHelper:
@@ -13,5 +13,5 @@ class ShortGeneratorHelper:
         if random.randint(1, 100) < 30:
             name.append(str(noun))
         else:
-            name.append(plural(noun))
+            name.append(grammar.plural(noun))
         return ' '.join(name)

@@ -1,7 +1,6 @@
 import random
-import re
 
-from grammar import plural
+from randomizer import grammar
 from randomizer.models import Category, Word
 
 
@@ -17,4 +16,4 @@ def random_word(category_name):
 
 
 def pluralize(word):
-    return plural(word)
+    return grammar.plural(word)
