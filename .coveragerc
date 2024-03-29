@@ -1,0 +1,6 @@
+[run]
+omit =
+    */django/*,
+    */tests.py,
+    */test_*.py,
+    manage.py
