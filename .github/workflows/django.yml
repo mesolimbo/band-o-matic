@@ -28,5 +28,5 @@ jobs:
     - name: Run Tests with Coverage
       run: |
         pip install coverage
-        coverage run manage.py test --parallel --shuffle
+        coverage run --omit='*/django/*,*/tests.py,*/test_*.py,manage.py' manage.py test --parallel --shuffle
         coverage report
