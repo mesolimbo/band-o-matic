@@ -2,6 +2,7 @@ import random
 import time
 
 from randomizer.generators.abstract_generator import AbstractGenerator
+from randomizer.generators.helpers.action_helper import ActionGeneratorHelper
 
 
 class ActionGenerator(AbstractGenerator):
@@ -11,8 +12,7 @@ class ActionGenerator(AbstractGenerator):
         random.seed(time.time())
 
     def generate_name(self):
-        glue = random.choice(["Can", "Can't", "Will", "Won't", "Might", "Who", "Don't"])
-        plural_noun = self.util.pluralize(self.util.random_word('Noun'))
+        noun = self.util.random_word('Noun')
         verb = self.util.random_word('Verb')
 
-        return f"{plural_noun} {glue} {verb}"
+        return ActionGeneratorHelper.assemble_name(noun, verb)

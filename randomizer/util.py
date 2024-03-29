@@ -1,8 +1,7 @@
 import random
 import re
 
-import inflect
-
+from grammar import plural
 from randomizer.models import Category, Word
 
 
@@ -18,9 +17,4 @@ def random_word(category_name):
 
 
 def pluralize(word):
-    p = inflect.engine()
-    plural = p.plural_noun(str(word))
-    # Fix buggy y plurals
-    clean_plural = re.sub('(?<![aeiou])ys$', 'ies', plural)
-
-    return clean_plural
+    return plural(word)

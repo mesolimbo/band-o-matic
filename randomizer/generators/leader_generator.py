@@ -1,11 +1,13 @@
 from randomizer.generators.abstract_generator import AbstractGenerator
+from randomizer.generators.helpers.leader_helper import LeaderGeneratorHelper
 
 
 class LeaderGenerator(AbstractGenerator):
+
     def generate_name(self):
 
-        leader = self.util.random_word('Famous')
+        famous = self.util.random_word('Famous')
         adjective = self.util.random_word('Adjective')
-        plural_noun = self.util.pluralize(self.util.random_word('Noun'))
+        noun = self.util.random_word('Noun')
 
-        return f"{leader} & The {adjective} {plural_noun}"
+        return LeaderGeneratorHelper.assemble_name(famous, adjective, noun)

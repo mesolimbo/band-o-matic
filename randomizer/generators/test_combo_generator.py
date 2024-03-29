@@ -2,6 +2,7 @@ import unittest
 import unittest.mock as mock
 
 from randomizer.generators.combo_generator import ComboGenerator
+from randomizer.generators.helpers.combo_helper import ComboGeneratorHelper
 
 
 class TestComboGenerator(unittest.TestCase):
@@ -20,7 +21,7 @@ class TestComboGenerator(unittest.TestCase):
 
         # Verify the result and interactions
         self.assertListEqual(mock_util.random_word.call_args_list, [mock.call('Noun'), mock.call('Noun')])
-        self.assertListEqual(mock_choice.call_args_list, [mock.call(self.generator.prefixes), mock.call(self.generator.prefixes)])
+        self.assertListEqual(mock_choice.call_args_list, [mock.call(ComboGeneratorHelper.prefixes), mock.call(ComboGeneratorHelper.prefixes)])
         self.assertEqual(result, "This Noun1 & That Noun2")
 
 
