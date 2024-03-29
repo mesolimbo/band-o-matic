@@ -1,13 +1,17 @@
 from django.core.management import call_command
 from django.test import TestCase
+
 import csv
 import os
 
+
+from randomizer.management.commands import load_defaults
 from randomizer.models import Word, Category, WordCategory
 
 
 class TestLoadDefaults(TestCase):
     def setUp(self):
+        self.command = load_defaults.Command()
         self.csv_file = "./test_words.csv"
         rows = [
             {"name": "Fast", "category": "Adjective"},

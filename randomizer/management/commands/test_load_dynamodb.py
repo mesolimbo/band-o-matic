@@ -1,9 +1,13 @@
 import unittest
 from unittest.mock import patch, MagicMock
+
+from django.core.management import call_command
+from django.test import TestCase
+
 from randomizer.management.commands import load_dynamodb
 
 
-class TestLoadDynamoDB(unittest.TestCase):
+class TestLoadDynamoDB(TestCase):
     @patch('boto3.resource')
     def setUp(self, mock_resource):
         self.command = load_dynamodb.Command()
@@ -50,7 +54,7 @@ class TestLoadDynamoDB(unittest.TestCase):
         mock_load_csv_data.return_value = [('Adjective', 'Adamant'), ('Adjective', 'Adroit')]
         mock_process_rows.return_value = ({'Adjective'}, {'Adamant': {'Adjective'}, 'Adroit': {'Adjective'}})
 
-        self.command.handle()
+        call_command('load_dynamodb')
 
         mock_init_db.assert_called_once()
         mock_load_csv_data.assert_called_once()
