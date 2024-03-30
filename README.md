@@ -10,7 +10,7 @@ The aim was to construct a full-featured **Content Management System (CMS)** and
 
 ## 🚀 Deployment & Infrastructure
 
-The developed solution is configured for deployment via **Continuous Integration and Continuous Deployment (CI/CD)** pipeline to a **Basic Heroku web Dyno** integrated with a **mini-PostgreSQL database add-on**. This brings the total cost to approximately **$12 per month**. With the move to AWS the cost is effectively zero, as the lambda function is within the free tier..
+The developed solution is configured for deployment via **Continuous Integration and Continuous Deployment (CI/CD)** pipeline to a **Basic Heroku web Dyno** integrated with a **mini-PostgreSQL database add-on**. This brings the total cost to approximately **$12 per month**. With the move to AWS the cost is effectively zero, as the lambda function is within the free tier.
 
 ## 🛠 Application Design
 
@@ -24,7 +24,7 @@ This project also functions as an **OpenAI GPT action endpoint**, making it a so
 
 The awslambda directory is configured to hold the dependencies and files needed to pick a random band name using DynamoDB and AWS Lamdba without the overhead of Django. The Django app is still useful to manage the content locally, and I've added an export endpoint to convert the Django data to a CVS which can then be ingested into AWS.
 
-Because the Django classes build on top of the Lambda work, assembling the zip for AWS is a little tricky, but you need to add new dependencies to the Lambda function via the awsrequirements.txt in that directory, then run:
+Because the Django classes build on top of the Lambda work, assembling the zip for AWS is a little tricky, but if you need to add new dependencies to the Lambda function do so via the awsrequirements.txt in that directory, then run:
 
 ```bash
     docker build -t lambda-bando-app .
@@ -34,4 +34,4 @@ You can upload the lambda_package.zip to AWS Lambda and configure the handler to
 
 ## 🌱 Future Directions
 
-Although the functional enhancements for this project might be minimal, its design offers a compelling demonstration of a mini CMS. It will undergo further refining, and will likely serve as a springboard for exploring the synergistic use of **React** and **Django** REST APIs. Furthermore, it provides a suitable test-bed to follow disciplined **Python programming practices** within the **DevSecOps** framework, and to learn how to better leverage GitHub's tooling.
+Although the functional enhancements for this project might be minimal, its design offers a compelling demonstration of a mini CMS. It will undergo further refining, and will likely serve as a springboard for exploring the synergistic use of **React** and **Django** REST APIs in a different pet project. Furthermore, it provided a suitable test-bed to follow disciplined **Python programming practices** within the **DevSecOps** framework, and to learn how to better leverage GitHub's tooling.
