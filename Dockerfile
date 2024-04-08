@@ -33,5 +33,3 @@ RUN find /app -name '*.py' -exec sed -i 's/awslambda.helpers/helpers/g' {} \;
 
 # Install any needed packages specified in awsrequirements.txt
 RUN pip install -r awsrequirements.txt --platform manylinux2014_x86_64 --target /app --only-binary=:all:
-
-# docker build -t lambda-bando-app . && docker run --rm -v $(pwd):/tmp lambda-bando-app zip -r /tmp/lambda_package.zip .

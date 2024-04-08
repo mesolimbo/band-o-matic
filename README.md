@@ -28,7 +28,8 @@ Because the Django classes build on top of the Lambda work, assembling the zip f
 
 ```bash
     docker build -t lambda-bando-app .
-    docker run --rm -v $(pwd):/tmp lambda-bando-app zip -r /tmp/lambda_package.zip .
+    docker run --rm -v $(pwd):/tmp lambda-bando-app \
+    /bin/sh -c "mkdir -p /tmp/dist && zip -r /tmp/dist/lambda_package.zip ."
  ```
 You can upload the lambda_package.zip to AWS Lambda and configure the handler to be `lambda_function.lambda_handler`.
 
