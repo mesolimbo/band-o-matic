@@ -64,10 +64,72 @@ class Command(BaseCommand):
             TableName=name,
             KeySchema=[{'AttributeName': 'name', 'KeyType': 'HASH'}],
             AttributeDefinitions=[{'AttributeName': 'name', 'AttributeType': 'S'}],
-            ProvisionedThroughput={'ReadCapacityUnits': 5, 'WriteCapacityUnits': 5}
+            ProvisionedThroughput={'ReadCapacityUnits': 1, 'WriteCapacityUnits': 5}
         )
         new_table.wait_until_exists()
         logger.info(f'Table created {name}')
+
+        # Enable autoscaling
+        client = boto3.client('application-autoscaling')
+
+        # Define the autoscaling policy
+        policy = {
+            'PolicyName': 'DynamoDBReadCapacityUtilization',
+            'PolicyType': 'TargetTrackingScaling',
+            'TargetTrackingScalingPolicyConfiguration': {
+                'PredefinedMetricSpecification': {
+                    'PredefinedMetricType': 'DynamoDBReadCapacityUtilization'
+                },
+                'TargetValue': 70.0,
+                'ScaleOutCooldown': 60,
+                'ScaleInCooldown': 60
+            }
+        }
+
+        # Apply the autoscaling policy to the table
+        client.register_scalable_target(
+            ServiceNamespace='dynamodb',
+            ResourceId=f'table/{name}',
+            ScalableDimension='dynamodb:table:ReadCapacityUnits',
+            MinCapacity=1,
+            MaxCapacity=100
+        )
+
+        client.put_scaling_policy(
+            ServiceNamespace='dynamodb',
+            ResourceId=f'table/{name}',
+            ScalableDimension='dynamodb:table:ReadCapacityUnits',
+            PolicyName=policy['PolicyName'],
+            PolicyType=policy['PolicyType'],
+            TargetTrackingScalingPolicyConfiguration=policy['TargetTrackingScalingPolicyConfiguration']
+        )
+
+        # Enable autoscaling for write capacity
+        client.register_scalable_target(
+            ServiceNamespace='dynamodb',
+            ResourceId=f'table/{name}',
+            ScalableDimension='dynamodb:table:WriteCapacityUnits',
+            MinCapacity=1,
+            MaxCapacity=100
+        )
+
+        client.put_scaling_policy(
+            ServiceNamespace='dynamodb',
+            ResourceId=f'table/{name}',
+            ScalableDimension='dynamodb:table:WriteCapacityUnits',
+            PolicyName='DynamoDBWriteCapacityUtilization',
+            PolicyType='TargetTrackingScaling',
+            TargetTrackingScalingPolicyConfiguration={
+                'PredefinedMetricSpecification': {
+                    'PredefinedMetricType': 'DynamoDBWriteCapacityUtilization'
+                },
+                'TargetValue': 70.0,
+                'ScaleOutCooldown': 60,
+                'ScaleInCooldown': 60
+            }
+        )
+
+        logger.info(f'Autoscaling enabled for table {name}')
 
         return new_table
 
