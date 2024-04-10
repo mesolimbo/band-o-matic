@@ -55,7 +55,7 @@ class Command(BaseCommand):
             table.wait_until_not_exists()
             logger.info(f'Table deleted {table_name}')
         except dynamodb.meta.client.exceptions.ResourceNotFoundException:
-            pass
+            logger.error(f'Table not found {table_name}')
 
     @staticmethod
     def create_new_table(name, dynamodb):
@@ -64,21 +64,34 @@ class Command(BaseCommand):
             TableName=name,
             KeySchema=[{'AttributeName': 'name', 'KeyType': 'HASH'}],
             AttributeDefinitions=[{'AttributeName': 'name', 'AttributeType': 'S'}],
-            ProvisionedThroughput={'ReadCapacityUnits': 1, 'WriteCapacityUnits': 5}
+            ProvisionedThroughput={'ReadCapacityUnits': 1, 'WriteCapacityUnits': 1}
         )
+
         new_table.wait_until_exists()
-        logger.info(f'Table created {name}')
 
-        # Enable autoscaling
+        Command.enable_autoscale(name)
+        logger.info(f'Table {name} ready')
+
+        return new_table
+
+    @staticmethod
+    def enable_autoscale(table_name):
+        """ Enable autoscaling for read and write capacity on given table """
         client = boto3.client('application-autoscaling')
+        Command.autoscale_capacity(client, table_name, 'Read')
+        Command.autoscale_capacity(client, table_name, 'Write')
 
+        logger.info(f'Autoscaling enabled for table {table_name}')
+
+    @staticmethod
+    def autoscale_capacity(client, table_name, io_type):
         # Define the autoscaling policy
         policy = {
-            'PolicyName': 'DynamoDBReadCapacityUtilization',
+            'PolicyName': f'DynamoDB{io_type}CapacityUtilization',
             'PolicyType': 'TargetTrackingScaling',
             'TargetTrackingScalingPolicyConfiguration': {
                 'PredefinedMetricSpecification': {
-                    'PredefinedMetricType': 'DynamoDBReadCapacityUtilization'
+                    'PredefinedMetricType': f'DynamoDB{io_type}CapacityUtilization'
                 },
                 'TargetValue': 70.0,
                 'ScaleOutCooldown': 60,
@@ -86,52 +99,20 @@ class Command(BaseCommand):
             }
         }
 
-        # Apply the autoscaling policy to the table
-        client.register_scalable_target(
-            ServiceNamespace='dynamodb',
-            ResourceId=f'table/{name}',
-            ScalableDimension='dynamodb:table:ReadCapacityUnits',
-            MinCapacity=1,
-            MaxCapacity=100
-        )
+        dimension_params = {
+            'ServiceNamespace': 'dynamodb',
+            'ResourceId': f'table/{table_name}',
+            'ScalableDimension': f'dynamodb:table:{io_type}CapacityUnits',
+        }
 
+        # Apply the autoscaling policy to the table
+        client.register_scalable_target(**dimension_params, MinCapacity=1, MaxCapacity=10)
         client.put_scaling_policy(
-            ServiceNamespace='dynamodb',
-            ResourceId=f'table/{name}',
-            ScalableDimension='dynamodb:table:ReadCapacityUnits',
+            **dimension_params,
             PolicyName=policy['PolicyName'],
             PolicyType=policy['PolicyType'],
             TargetTrackingScalingPolicyConfiguration=policy['TargetTrackingScalingPolicyConfiguration']
         )
-
-        # Enable autoscaling for write capacity
-        client.register_scalable_target(
-            ServiceNamespace='dynamodb',
-            ResourceId=f'table/{name}',
-            ScalableDimension='dynamodb:table:WriteCapacityUnits',
-            MinCapacity=1,
-            MaxCapacity=100
-        )
-
-        client.put_scaling_policy(
-            ServiceNamespace='dynamodb',
-            ResourceId=f'table/{name}',
-            ScalableDimension='dynamodb:table:WriteCapacityUnits',
-            PolicyName='DynamoDBWriteCapacityUtilization',
-            PolicyType='TargetTrackingScaling',
-            TargetTrackingScalingPolicyConfiguration={
-                'PredefinedMetricSpecification': {
-                    'PredefinedMetricType': 'DynamoDBWriteCapacityUtilization'
-                },
-                'TargetValue': 70.0,
-                'ScaleOutCooldown': 60,
-                'ScaleInCooldown': 60
-            }
-        )
-
-        logger.info(f'Autoscaling enabled for table {name}')
-
-        return new_table
 
     @staticmethod
     def read_csv_file(csv_path):
