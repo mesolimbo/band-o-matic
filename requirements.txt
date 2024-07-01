@@ -21,7 +21,7 @@ inflect==7.0.0
 itypes==1.2.0
 jmespath==1.0.1
 packaging==24.1
-psycopg-binary==3.1.19
+psycopg-binary==3.2.1
 psycopg==3.1.19
 pydantic==2.6.4
 pydantic_core==2.16.3
