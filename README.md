@@ -16,10 +16,6 @@ The developed solution is configured for deployment via **Continuous Integration
 
 The application boasts a straightforward design – it deals with two primary models, **Words** and **Categories**, assisted by a helper model, **WordCategory**, for managing many-to-many relationships. The simplicity of the underlying design makes this an excellent resource for beginners trying to grasp the intricacies of **Django**. It encompasses various crucial features of Django such as appropriately setting up the admin app, the REST framework, different kinds of views and templates, testing techniques, etc.
 
-## ⚙️ OpenAI GPT Action Endpoint
-
-This project also functions as an **OpenAI GPT action endpoint**, making it a solid starting point if you aim to build your own endpoint or define an **OpenAPI specification**. Given the upcoming opening of the GPT store by OpenAI, the content will be periodically updated to keep pace with ongoing developments. [Click here if you want to try the Random Band Name Generator GPT.](https://chat.openai.com/g/g-cySOJm4lG-awesome-band-factory)
-
 ## 🤖 AWS Lambda Integration
 
 The awslambda directory is configured to hold the dependencies and files needed to pick a random band name using DynamoDB and AWS Lamdba without the overhead of Django. The Django app is still useful to manage the content locally, and I've added an export endpoint to convert the Django data to a CVS which can then be ingested into AWS.
