@@ -8,7 +8,7 @@ asgiref==3.7.2
 boto3==1.34.2
 botocore==1.34.158
 certifi==2024.8.30
-charset-normalizer==3.3.2
+charset-normalizer==3.4.0
 coreapi==2.3.3
 coreschema==0.0.4
 coverage==7.4.4
