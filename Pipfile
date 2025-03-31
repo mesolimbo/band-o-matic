@@ -16,7 +16,7 @@ gunicorn = "==23.0.0"
 inflect = "7.5.0"
 psycopg = {extras = ["binary"], version = "3.2.6"}
 setuptools = "==77.0.3"
-sqlparse = "==0.5.2"
+sqlparse = "==0.5.3"
 whitenoise = {extras = ["brotli"], version = "<7.0,>=6.0"}
 
 [dev-packages]
