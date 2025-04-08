@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-asgiref = "==3.7.2"
+asgiref = "==3.8.1"
 boto3 = "==1.35.68"
 coreapi = "2.3.3"
 coverage = "7.7.0"
