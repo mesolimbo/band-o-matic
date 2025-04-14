@@ -23,7 +23,7 @@ packaging==24.2
 psycopg==3.2.5
 psycopg-binary==3.2.6
 pydantic_core==2.27.2
-pydantic==2.10.6
+pydantic==2.11.3
 PyJWT==2.10.1
 python-dateutil==2.9.0.post0
 pytz==2025.2
