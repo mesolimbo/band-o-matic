@@ -22,7 +22,7 @@ MarkupSafe==3.0.2
 packaging==25.0
 psycopg==3.2.6
 psycopg-binary==3.2.6
-pydantic_core==2.27.2
+pydantic_core==2.34.1
 pydantic==2.10.6
 PyJWT==2.10.1
 python-dateutil==2.9.0.post0
