@@ -14,7 +14,7 @@ djangorestframework = "==3.16.0"
 djangorestframework-simplejwt = "==5.4.0"
 gunicorn = "==23.0.0"
 inflect = "7.5.0"
-psycopg = {extras = ["binary"], version = "3.2.6"}
+psycopg = {extras = ["binary"], version = "3.2.7"}
 setuptools = "==79.0.0"
 sqlparse = "==0.5.3"
 whitenoise = {extras = ["brotli"], version = "<7.0,>=6.0"}
