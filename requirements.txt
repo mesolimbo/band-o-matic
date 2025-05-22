@@ -3,7 +3,7 @@ asgiref==3.8.1
 boto3==1.35.81
 botocore==1.35.97
 Brotli==1.1.0
-certifi==2025.1.31
+certifi==2025.4.26
 charset-normalizer==3.4.2
 coreapi==2.3.3
 coreschema==0.0.4
